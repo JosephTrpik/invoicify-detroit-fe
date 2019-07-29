@@ -1,0 +1,14 @@
+div.a {
+    text-align: center;
+    line-height: 140px;
+    height: 140px;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  img {
+            border-radius: 50%;
+            width:200px;
+            height: 200px;
+          }

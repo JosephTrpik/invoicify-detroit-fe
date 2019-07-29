@@ -13,10 +13,11 @@ import { BillingRecordFormComponent } from '../billing-record-form/billing-recor
 import { InvoiceFormComponent } from '../invoice-form/invoice-form.component';
 import { InvoiceComponent } from '../invoice/invoice.component';
 import { CompanyInfoComponent } from '../company-info/company-info.component';
+import { LandingPage1Component } from 'app/landing-page1/landing-page1.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home',  component: HomeComponent },
+  { path: 'home',  component: LandingPage1Component },
   { path: 'company',  component: CompanyComponent, canActivate: [AuthGuard] },
   { path: 'company/id', component: CompanyInfoComponent, canActivate: [AuthGuard]},
   // adding company-info path 
