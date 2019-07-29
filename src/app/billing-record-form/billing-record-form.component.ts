@@ -20,7 +20,7 @@ export class BillingRecordFormComponent implements OnInit {
   errorMessage: string;
   companies: any[];
 
-  billingRecord: object;
+  billingRecord: any;
 
   constructor(
     private dataService: DataService,

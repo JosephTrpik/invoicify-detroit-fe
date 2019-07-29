@@ -21,7 +21,7 @@ export class UserFormComponent implements OnInit {
   successMessage: string;
   errorMessage: string;
 
-  user: object;
+  user: any;
 
   constructor(
     private dataService: DataService,

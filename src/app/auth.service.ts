@@ -5,7 +5,7 @@ import { DataService } from './data.service';
 @Injectable()
 export class AuthService {
 
-  constructor(private dataService: DataService) {}
+  constructor(public dataService: DataService) {}
 
   login(user){
 

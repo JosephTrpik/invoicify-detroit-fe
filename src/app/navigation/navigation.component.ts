@@ -15,7 +15,7 @@ export class NavigationComponent implements OnInit {
   errorMessage: string;
   successMessage: string;
 
-  constructor(private authService: AuthService, public router: Router) { }
+  constructor(public authService: AuthService, public router: Router) { }
 
   ngOnInit() {
     this.refreshUser();
