@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵConsole } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -73,11 +73,19 @@ export class DataService {
     }
 
     addRecord(endpoint: string, record:object): Observable<any> {
+        
         let apiUrl = `${this.baseUrl}${endpoint}`;
+        console.log(apiUrl);
+        console.log(record)
         return this.http.post(apiUrl, record, this.options)
             .map(this.extractData);
     }
 
+    duplicateInvoice(endpoint: string, id:number): Observable<any[]> {
+        let apiUrl = `${this.baseUrl}${endpoint}/${id}`;    
+        console.log(apiUrl);   
+        return this.http.get(apiUrl, this.options).map(this.extractData).catch(this.handleError);
+    }
 
     private extractData(res: Response) {
         let results = res.json();

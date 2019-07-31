@@ -61,8 +61,8 @@ export class BillingRecordFormComponent implements OnInit {
     }
 
     endpoint += "/" + billingRecordForm.value.client
-
     delete(billingRecordForm.value.client)
+
 
     if(typeof billingRecordForm.value.id === "number"){
       // endpoint += "/";

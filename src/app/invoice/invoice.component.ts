@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import * as jspdf from 'jspdf';  
+import jspdf from 'jspdf';  
+import 'jspdf-autotable';
 
 import { DataService } from '../data.service'
 import { DeleteConfirmComponent } from '../delete-confirm/delete-confirm.component'
@@ -16,11 +17,20 @@ export class InvoiceComponent implements OnInit {
 
   errorMessage: string;
   successMessage: string;
+  selectedInvoiceId = 0;
+  selectedUnpaidInvoice: boolean = false;
   invoices: any[];
+  unpaidInvoices: any[];
+  paidInvoices: any[];
+  duplicateResults: any[];
 
   constructor (private dataService: DataService) {}
 
-  ngOnInit() { this.getInvoices(); }
+  ngOnInit() { 
+    this.getInvoices(); 
+    this.getPaidInvoices(); 
+    this.getUnpaidInvoices(); 
+  }
 
   getInvoices() {
     this.dataService.getRecords("invoice")
@@ -29,17 +39,56 @@ export class InvoiceComponent implements OnInit {
         error =>  this.errorMessage = <any>error);
   }
 
+  getPaidInvoices() {
+    this.dataService.getRecords("invoice/paid")
+      .subscribe(
+        results => this.paidInvoices = results,
+        error =>  this.errorMessage = <any>error);
+  }
+
+  getUnpaidInvoices() {
+    this.dataService.getRecords("invoice/unpaid")
+      .subscribe(
+        results => this.unpaidInvoices = results,
+        error =>  this.errorMessage = <any>error);
+  }
+
+
+  onSelectionChangeUnpaid(invoiceId) {
+      this.selectedInvoiceId = invoiceId;
+      this.selectedUnpaidInvoice = true;
+  }
+
+  onSelectionChangePaid(invoiceId) {
+    this.selectedInvoiceId = invoiceId;
+    this.selectedUnpaidInvoice = false;
+}
+
+  duplicateInvoice(selectedInvoiceId) {
+    this.dataService.duplicateInvoice("invoice/duplicate", selectedInvoiceId).subscribe(
+      results => this.duplicateResults = results,
+      error => this.errorMessage = <any>error);  
+
+      var i;
+      for (i = 0; i < 25; i++) { 
+        this.getUnpaidInvoices();
+      }
+  }
+
+  trackByFn(index, item) {
+    return index; 
+  }
+
   public makePDF()  
   {  
-    var data = document.getElementById('PDFify');  
+    let pdf = new jspdf('p', 'pt', 'letter');
+    pdf.text(60, 30, "Unpaid");
+    pdf.autoTable({html: '#dataTable', theme: 'grid', minCellHeight: 1000});
+    pdf.addPage();
+    pdf.text(60, 30, "Paid");
+    pdf.autoTable({html: '#dataTable1', theme: 'grid', minCellHeight: 1000});
 
-  let margins = {
-    top: 80, bottom: 60, left: 60, width: 522
-    };
-  
-      let pdf = new jspdf('p', 'pt', 'letter');
-      pdf.fromHTML(data,margins.left, margins.top);
-
-      pdf.save('PDFify.pdf'); 
+    pdf.save('PDFify.pdf'); 
   }  
+
 }

@@ -34,7 +34,7 @@ export class CompanyFormComponent implements OnInit {
     this.route.params
       .switchMap((params: Params) => this.dataService.getRecord("company", +params['id']))
       .subscribe(company => this.company = company);
-  }
+    }
 
   ngOnInit() {
     this.route.params
