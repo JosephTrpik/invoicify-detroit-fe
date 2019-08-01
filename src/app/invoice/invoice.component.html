@@ -10,12 +10,12 @@
   
     <a class="btn btn-primary" routerLink="/invoice/add">Add Invoice</a>
 
+    <input type="button" class="btn btn-primary" value="PDFify" (click)="makePDF()"/>
+
+    <a *ngIf="selectedUnpaidInvoice === true || selectedPaidInvoice === true" class="btn btn-primary" (click)="duplicateInvoice([selectedInvoiceId])">Duplicate Invoice</a>
+
     <a *ngIf="selectedInvoiceId && selectedUnpaidInvoice === true" class="btn btn-primary" routerLink="/invoice/payment/add/{{selectedInvoiceId}}">Make Payment</a>
 
-    <a class="btn btn-primary" (click)="duplicateInvoice([selectedInvoiceId])">Duplicate Invoice</a>
-
-
-    <input type="button" class="btn btn-primary" value="PDFify" (click)="makePDF()"/>
     <div id="PDFify-Unpaid">
 
     <table class="table table-striped table-bordered" id="dataTable" style="width:100%">

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DataService } from '../data.service';
 import { fadeInAnimation } from '../animations/fade-in.animation';
 
 @Component({
@@ -11,9 +11,26 @@ import { fadeInAnimation } from '../animations/fade-in.animation';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  errorMessage: string;
+  dataCards: any;
+  avgInvoiceAmount: number;
+  avgTimeToPay: number;
+  totalIncome: number;
+  totalOutstandingAmount: number;
+  numberOutstandingInvoices: number;
+  numberPaidInvoices: number;
+  paymentMethod: any;
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.getDataCards();
+  }
+  getDataCards() {
+    this.dataService.getRecords("data")
+      .subscribe(
+        results => this.dataCards = results, 
+        error => this.errorMessage = <any>error);
   }
 
 }

@@ -19,6 +19,7 @@ export class InvoiceComponent implements OnInit {
   successMessage: string;
   selectedInvoiceId = 0;
   selectedUnpaidInvoice: boolean = false;
+  selectedPaidInvoice: boolean = false;
   invoices: any[];
   unpaidInvoices: any[];
   paidInvoices: any[];
@@ -57,11 +58,13 @@ export class InvoiceComponent implements OnInit {
   onSelectionChangeUnpaid(invoiceId) {
       this.selectedInvoiceId = invoiceId;
       this.selectedUnpaidInvoice = true;
+      this.selectedPaidInvoice = false;
   }
 
   onSelectionChangePaid(invoiceId) {
     this.selectedInvoiceId = invoiceId;
     this.selectedUnpaidInvoice = false;
+    this.selectedPaidInvoice = true;
 }
 
   duplicateInvoice(selectedInvoiceId) {

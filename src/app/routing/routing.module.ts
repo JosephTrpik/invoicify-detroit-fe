@@ -16,12 +16,23 @@ import { PaymentFormComponent } from '../payment-form/payment-form.component';
 import { PaymentComponent } from '../payment/payment.component';
 import { CompanyInfoComponent } from '../company-info/company-info.component';
 import { LandingPage1Component } from 'app/landing-page1/landing-page1.component';
+import { AnalyticsComponent } from 'app/analytics/analytics.component';
+import { ChartBalanceYtdComponent } from 'app/chart-balance-ytd/chart-balance-ytd.component';
+import { Chart30dayBalanceComponent } from 'app/chart-30day-balance/chart-30day-balance.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home',  component: LandingPage1Component },
+  { path: '', redirectTo: '/landing', pathMatch: 'full' },
+  { path: 'landing',  component: LandingPage1Component },
+  { path: 'home',  component: HomeComponent, canActivate: [AuthGuard]  },
   { path: 'company',  component: CompanyComponent, canActivate: [AuthGuard] },
   { path: 'company/id', component: CompanyInfoComponent, canActivate: [AuthGuard]},
+  // chart 30 days balance
+  { path: 'chart30daybalance', component: Chart30dayBalanceComponent},
+  // chart balance ytd
+  { path: 'chartbalanceytd', component: ChartBalanceYtdComponent},
+  //
+  // analytic path
+  { path: 'analytics', component: AnalyticsComponent},
   // adding company-info path 
   { path: 'company-info/:id', component: CompanyInfoComponent, canActivate: [AuthGuard] },
   { path: 'company/edit/:id', component: CompanyFormComponent, canActivate: [AuthGuard] },
@@ -31,7 +42,7 @@ const routes: Routes = [
   { path: 'user/add', component: UserFormComponent, canActivate: [AuthGuard] },
   { path: 'billing-record',  component: BillingRecordComponent, canActivate: [AuthGuard] },
   { path: 'billing-record/add', component: BillingRecordFormComponent, canActivate: [AuthGuard] },
-  {path: 'billing-record/edit/:id', component: BillingRecordFormComponent, canActivate: [AuthGuard]},
+  { path: 'billing-record/edit/:id', component: BillingRecordFormComponent, canActivate: [AuthGuard]},
   { path: 'invoice/add', component: InvoiceFormComponent, canActivate: [AuthGuard] },
   { path: 'invoice', component: InvoiceComponent, canActivate: [AuthGuard] },
   { path: 'invoice/payment/add/:id', component: PaymentFormComponent, canActivate: [AuthGuard] },

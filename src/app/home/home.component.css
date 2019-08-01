@@ -1,0 +1,88 @@
+h1 {
+    text-align: center;
+    font-size: 40px;
+    font-family:"Helvetica", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.graphbox {
+    display: flex;
+    margin-left: -5em;
+    margin-right: 0em;
+    margin-top: 5em;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 65em;
+  
+}
+
+.cardbox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 4em;    
+    margin-left: -5em;
+    flex-wrap: wrap;
+    width: 65em;
+    height: 30em;
+}
+
+
+.card{
+    border: 1px solid black; 
+    padding: 1em 1em;
+    height:15em; 
+    width: 21em; 
+    margin: 0.3em;
+}
+
+#pnum{
+    font-size: 3.2em;
+    overflow-wrap: break-word;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: .5em;
+    font-family: "Helvetica", sans-serif;
+}
+
+#ptitle{
+    font-size: 2em;
+    overflow-wrap: break-word;
+    text-align: center;
+    height:2em;
+    font-family: "Helvetica", sans-serif;
+}
+
+#card1 {
+    background-color:#8E3A80;
+    color: white;
+}
+
+#card2 {
+    background-color:white;
+    color:  black;
+}
+
+#card3 {
+    background-color:#8E3A80;
+    color: white;
+}
+
+#card4 {
+    background-color: white;
+    color: black;
+}
+
+#card5 {
+    background-color: #8E3A80;
+    color: white;
+}
+
+#card6 {
+    background-color:white;
+    color:  black;
+}
+
+#graph{
+    margin-bottom: 4em;
+}

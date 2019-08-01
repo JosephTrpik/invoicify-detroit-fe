@@ -39,7 +39,9 @@ export class CompanyInfoComponent implements OnInit {
 			animationEnabled: true,
 			theme: "light2",
 			title: {
-				text: "Balance History"
+				text: "Balance History",
+				fontFamily: "Helvetica",
+				fontWeight: "bold"
 			},
 			axisX: {
 				valueFormatString: "DD MMM YYYY",
@@ -62,6 +64,7 @@ export class CompanyInfoComponent implements OnInit {
 			},
 			data: [{
 				type: "area",
+				color: "#371447",
 				xValueFormatString: "DD MMM YYYY",
 				yValueFormatString: "$##0.00",
 				dataPoints: dataPoints

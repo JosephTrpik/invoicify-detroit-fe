@@ -25,7 +25,7 @@ export class NavigationComponent implements OnInit {
     this.authService.logout().subscribe(
       success=> {
         this.refreshUser();
-        this.router.navigate(["home"])
+        this.router.navigate(["landing"])
       } 
     );
   }
@@ -34,6 +34,7 @@ export class NavigationComponent implements OnInit {
     this.authService.login(user.value).subscribe(
       success=> {
         this.refreshUser();
+        this.router.navigate(["home"])
       },
       error => {
         this.errorMessage = "Invalid login"
