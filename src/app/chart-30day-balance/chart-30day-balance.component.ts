@@ -90,12 +90,12 @@ export class Chart30dayBalanceComponent implements OnInit {
 
     let curBal = 0.0;
     this.invoices.forEach(invoice => {
-
-      if (!invoice.paidOn) {
+      // console.log("paid on ", invoice.paidOn);
+      if (!invoice.paidOn && new Date(invoice.createdOn) <= balance_date) {
         curBal += invoice.initialBalance;
       }
-      else if (new Date(invoice.paidOn) > balance_date) {
-
+      else if (new Date(invoice.paidOn) > balance_date && new Date(invoice.createdOn) <= balance_date) {
+        // console.log("initial balance", invoice.initialBalance);
         curBal += invoice.initialBalance;
       }
 

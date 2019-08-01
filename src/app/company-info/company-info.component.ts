@@ -78,10 +78,10 @@ export class CompanyInfoComponent implements OnInit {
 		let curBal = 0.0;
 		this.invoices.forEach(invoice => {
 			console.log("paid on ",invoice.paidOn);
-			if (!invoice.paidOn) {
+			if (!invoice.paidOn && new Date(invoice.createdOn) <= balance_date) {
 				curBal += invoice.initialBalance;
 			}
-			else if (new Date(invoice.paidOn) > balance_date) {
+			else if (new Date(invoice.paidOn) > balance_date && new Date(invoice.createdOn) <= balance_date) {
 				console.log("initial balance",invoice.initialBalance);
 				curBal += invoice.initialBalance;
 			}
