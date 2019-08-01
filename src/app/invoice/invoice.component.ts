@@ -76,6 +76,7 @@ export class InvoiceComponent implements OnInit {
       for (i = 0; i < 25; i++) { 
         this.getUnpaidInvoices();
       }
+      this.successMessage = "Invoice Duplicated";
   }
 
   trackByFn(index, item) {

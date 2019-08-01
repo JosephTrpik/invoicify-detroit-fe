@@ -57,6 +57,8 @@ export class ChartPaymentMethodComponent implements OnInit {
         type: "doughnut",
         startAngle: 60,
         innerRadius: 70,
+        
+        radius: "80%",
         indexLabelFontSize: 17,
         indexLabel: "{label} - #percent%",
         toolTipContent: "<b>{label}:</b> {y} (#percent%)",
